@@ -37,6 +37,9 @@ import (
 	_ "github.com/apache/dubbo-go/protocol/grpc"
 	_ "github.com/apache/dubbo-go/registry/protocol"
 	_ "github.com/apache/dubbo-go/registry/zookeeper"
+
+	opentracing "github.com/opentracing/opentracing-go"
+	jaegercfg "github.com/uber/jaeger-client-go/config"
 )
 
 var (
@@ -51,6 +54,19 @@ func println(format string, args ...interface{}) {
 // 		export CONF_CONSUMER_FILE_PATH="xxx"
 // 		export APP_LOG_CONF_FILE="xxx"
 func main() {
+	cfg, err := jaegercfg.FromEnv()
+	if err != nil {
+		// parsing errors might happen here, such as when we get a string where we expect a number
+		return
+	}
+
+	tracer, closer, err := cfg.NewTracer()
+	if err != nil {
+		return
+	}
+	defer closer.Close()
+
+	opentracing.SetGlobalTracer(tracer)
 	config.Load()
 	time.Sleep(time.Second)
 
@@ -59,7 +75,7 @@ func main() {
 	req := &HelloRequest{
 		Name: "xujianhai",
 	}
-	err := grpcGreeterImpl.SayHello(context.TODO(), req, reply)
+	err = grpcGreeterImpl.SayHello(context.TODO(), req, reply)
 	if err != nil {
 		panic(err)
 	}
@@ -90,3 +106,4 @@ func initSignal() {
 		}
 	}
 }
+
