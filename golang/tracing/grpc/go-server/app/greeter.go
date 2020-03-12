@@ -20,6 +20,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"time"
 )
 
 import (
@@ -42,6 +43,7 @@ func NewGreeterProvider() *GreeterProvider {
 
 func (g *GreeterProvider) SayHello(ctx context.Context, req *HelloRequest) (reply *HelloReply, err error) {
 	fmt.Printf("req: %v", req)
+	time.Sleep(100* time.Microsecond)
 	return &HelloReply{Message: "this is message from reply"}, nil
 }
 
