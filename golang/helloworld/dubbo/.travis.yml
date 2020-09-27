@@ -8,5 +8,5 @@ jobs:
         - echo "Test Hello World dubbo ..."
         - docker run -d --network host zookeeper
         - echo "zookeeper listen in [:]2181"
-        - go run /golang/helloworld/dubbo/go-server/app/server.go
+        - go run golang/helloworld/dubbo/go-server/app/server.go
 
