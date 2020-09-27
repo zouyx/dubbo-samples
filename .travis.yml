@@ -1,2 +1,2 @@
 import:
-- golang/.travis.yml
+  - golang/.travis.yml
