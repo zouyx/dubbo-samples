@@ -6,6 +6,9 @@ go:
 env:
   - GO111MODULE=on
 
+before_install:
+  - cd golang
+
 install:
   - go mod vendor
 
