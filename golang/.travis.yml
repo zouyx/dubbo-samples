@@ -1,3 +1,11 @@
+language: golang
+
+sudo: required
+go:
+  - 1.12
+env:
+  - GO111MODULE=on
+
 install:
   - go mod vendor
 
