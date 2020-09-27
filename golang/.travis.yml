@@ -2,4 +2,4 @@ install:
   - go mod vendor
 
 import:
-- helloworld/dubbo/.travis.yml
+  - golang/helloworld/dubbo/.travis.yml
