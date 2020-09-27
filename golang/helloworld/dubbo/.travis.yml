@@ -3,7 +3,7 @@ stages:
 jobs:
   include:
     - stage: Hello World dubbo
-      go: 1.12
+      go: 1.13
       script:
         - echo "Test Hello World dubbo ..."
         - docker run -d --network host zookeeper
