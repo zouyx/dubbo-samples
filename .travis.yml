@@ -1,2 +1,10 @@
+language: golang
+
+sudo: required
+go:
+  - 1.12
+env:
+  - GO111MODULE=on
+
 import:
   - golang/.travis.yml
