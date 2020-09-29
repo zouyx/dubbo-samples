@@ -55,7 +55,7 @@ func main() {
 	gxlog.CInfo("\n\n\nstart to test dubbo")
 	user := &User{}
 	err := userProvider.GetUser(context.TODO(), []interface{}{"A001"}, user)
-	if err != nil {
+	if err == nil {
 		panic(err)
 	}
 	gxlog.CInfo("response result: %v\n", user)
