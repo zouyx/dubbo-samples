@@ -11,10 +11,10 @@ jobs:
         - PROJECT_HOME=$(pwd)
         - cd ${PROJECT_HOME}/golang/direct/dubbo/go-server/
         - assembly/linux/dev.sh
-        - cd target/*/*/
+        - cd target/*/
         - nohup bin/load.sh start > a.out&
         - cd ${PROJECT_HOME}/golang/direct/dubbo/go-client/
         - assembly/linux/dev.sh
         - tree target
-        - cd target/*/*/
+        - cd target/*/
         - bin/load.sh start
