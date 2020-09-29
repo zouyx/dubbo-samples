@@ -1,8 +1,8 @@
 stages:
-  - Hello World dubbo
+  - Test hello world
 jobs:
   include:
-    - stage: Hello World dubbo
+    - stage: Test hello world
       go: 1.13
       script:
         - echo "Test Hello World dubbo ..."

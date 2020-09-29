@@ -1,8 +1,8 @@
 stages:
-  - direct
+  - Test direct
 jobs:
   include:
-    - stage: direct
+    - stage: Test direct
       go: 1.13
       script:
         - echo "Test direct ..."
