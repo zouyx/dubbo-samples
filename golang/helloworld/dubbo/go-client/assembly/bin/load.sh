@@ -63,7 +63,7 @@ start() {
     chmod u+x ${APP_BIN}
     # CMD="nohup ${APP_BIN} ${APP_ARGS} >>${APP_NAME}.nohup.out 2>&1 &"
     CMD="${APP_BIN}"
-    R=`eval ${CMD}`
+    eval ${CMD}
     PID=`ps aux | grep -w ${APP_NAME} | grep -v grep | awk '{print $2}'`
     if [[ ${OS_NAME} != "Linux" && ${OS_NAME} != "Darwin" ]]; then
         PID=`ps aux | grep -w ${APP_NAME} | grep -v grep | awk '{print $1}'`
@@ -75,7 +75,7 @@ start() {
             echo "start ${APP_NAME} ( pid =" ${p} ") at " ${CUR}
         done
     fi
-    return R
+    return
 }
 
 stop() {
