@@ -64,29 +64,4 @@ func main() {
 		panic(err)
 	}
 	gxlog.CInfo("response result: %v\n", user)
-	initSignal()
-}
-
-func initSignal() {
-	signals := make(chan os.Signal, 1)
-	// It is not possible to block SIGKILL or syscall.SIGSTOP
-	signal.Notify(signals, os.Interrupt, os.Kill, syscall.SIGHUP,
-		syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT)
-	for {
-		sig := <-signals
-		logger.Infof("get signal %s", sig.String())
-		switch sig {
-		case syscall.SIGHUP:
-			// reload()
-		default:
-			time.AfterFunc(time.Duration(survivalTimeout), func() {
-				logger.Warnf("app exit now by force...")
-				os.Exit(1)
-			})
-
-			// The program exits normally or timeout forcibly exits.
-			fmt.Println("app exit now...")
-			return
-		}
-	}
 }
