@@ -15,6 +15,6 @@ jobs:
         - nohup bin/load.sh start > a.out&
         - cd ${PROJECT_HOME}/golang/direct/dubbo/go-client/
         - assembly/linux/dev.sh
+        - tree target
         - cd target/*/*/
         - bin/load.sh start
-
