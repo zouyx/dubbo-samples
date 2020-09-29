@@ -176,7 +176,7 @@ crontab() {
 opt=$1
 case C"$opt" in
     Cstart)
-        return start $2
+        start $2
         ;;
     Cstop)
         stop
