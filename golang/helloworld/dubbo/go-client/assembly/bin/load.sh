@@ -63,7 +63,7 @@ start() {
     chmod u+x ${APP_BIN}
     # CMD="nohup ${APP_BIN} ${APP_ARGS} >>${APP_NAME}.nohup.out 2>&1 &"
     CMD="${APP_BIN}"
-    eval ${CMD}
+    R=`eval ${CMD}`
     PID=`ps aux | grep -w ${APP_NAME} | grep -v grep | awk '{print $2}'`
     if [[ ${OS_NAME} != "Linux" && ${OS_NAME} != "Darwin" ]]; then
         PID=`ps aux | grep -w ${APP_NAME} | grep -v grep | awk '{print $1}'`
@@ -75,6 +75,7 @@ start() {
             echo "start ${APP_NAME} ( pid =" ${p} ") at " ${CUR}
         done
     fi
+    return R
 }
 
 stop() {
@@ -175,7 +176,7 @@ crontab() {
 opt=$1
 case C"$opt" in
     Cstart)
-        start $2
+        return start $2
         ;;
     Cstop)
         stop
