@@ -22,6 +22,6 @@ set -x
 rm -rf assembly
 wget "https://github.com/dubbogo/resources/raw/master/tools/integration/testing/$1/assembly.zip"
 unzip assembly.zip
-chomd u+x -R *
+chmod u+x -R *
 assembly/linux/dev.sh
 cd target/*/*/
