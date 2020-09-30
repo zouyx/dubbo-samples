@@ -21,7 +21,5 @@ set -x
 
 rm -rf assembly
 cp -r $1/.integration/testing/$2/assembly .
-unzip assembly.zip
-chomd u+x -R *
 assembly/linux/dev.sh
 cd target/*/*/
