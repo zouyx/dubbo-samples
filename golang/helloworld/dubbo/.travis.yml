@@ -13,7 +13,7 @@ jobs:
         - PROJECT_HOME=$(pwd)
         - cd ${PROJECT_HOME}/golang/helloworld/dubbo/go-server/
         - rm -rf assembly
-        - wget $SERVER_TESTING
+        - wget https://github.com/dubbogo/resources/raw/master/tools/integration/testing/go-server/assembly.zip
         - assembly/linux/dev.sh
         - cd target/*/*/
         - nohup bin/load.sh start > a.out&
@@ -22,7 +22,7 @@ jobs:
       script:
         - cd ${PROJECT_HOME}/golang/helloworld/dubbo/go-client/
         - rm -rf assembly
-        - wget CLIENT_TESTING
+        - wget https://github.com/dubbogo/resources/raw/master/tools/integration/testing/go-client/assembly.zip
         - assembly/linux/dev.sh
         - cd target/*/*/
         - bin/load.sh start
