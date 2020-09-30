@@ -9,12 +9,16 @@ jobs:
         - docker run -d --network host zookeeper
         - echo "zookeeper listen in [:]2181"
         - cd ${PROJECT_HOME}/golang/helloworld/dubbo/go-server/
-        - sudo chmod a+x -R *
-        - ls -al
-        - ./integration_test.sh go-server
+        - rm -rf assembly
+        - wget "https://github.com/dubbogo/resources/raw/master/tools/integration/testing/go-server/assembly.zip"
+        - unzip assembly.zip
+        - assembly/linux/dev.sh
+        - cd target/*/*/
         - nohup bin/load.sh start > a.out&
         - cd ${PROJECT_HOME}/golang/helloworld/dubbo/go-client/
-        - sudo chmod a+x -R *
-        - ls -al
-        - ./integration_test.sh go-client
+        - rm -rf assembly
+        - wget "https://github.com/dubbogo/resources/raw/master/tools/integration/testing/go-client/assembly.zip"
+        - unzip assembly.zip
+        - assembly/linux/dev.sh
+        - cd target/*/*/
         - bin/load.sh start
