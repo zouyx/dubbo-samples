@@ -5,16 +5,16 @@ jobs:
     - stage: Test hello world
       name: "prepare env"
       script:
-        - PROJECT_HOME=$(pwd)
+        - PROJECT_HOME=$(pwd)/golang
         - docker run -d --network host zookeeper
         - echo "zookeeper listen in [:]2181"
-        - cd ${PROJECT_HOME}/golang/helloworld/dubbo/go-server/
+        - cd ${PROJECT_HOME}/helloworld/dubbo/go-server/
         - rm -rf assembly
         - cp -r ${PROJECT_HOME}/.integration/testing/go-server/assembly .
         - assembly/linux/dev.sh
         - cd target/*/*/
         - nohup bin/load.sh start > a.out&
-        - cd ${PROJECT_HOME}/golang/helloworld/dubbo/go-client/
+        - cd ${PROJECT_HOME}/helloworld/dubbo/go-client/
         - rm -rf assembly
         - cp -r ${PROJECT_HOME}/.integration/testing/go-client/assembly .
         - assembly/linux/dev.sh
