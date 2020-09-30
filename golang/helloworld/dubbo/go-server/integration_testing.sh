@@ -22,4 +22,3 @@ set -x
 rm -rf assembly
 cp -r $1/.integration/testing/$2/assembly .
 assembly/linux/dev.sh
-cd target/*/*/
