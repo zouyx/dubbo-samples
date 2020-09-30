@@ -5,9 +5,6 @@ go:
   - 1.13
 env:
   - GO111MODULE=on
-  - SERVER_TESTING=https://github.com/dubbogo/resources/raw/master/tools/integration/testing/go-server/assembly.zip
-  - CLIENT_TESTING=https://github.com/dubbogo/resources/raw/master/tools/integration/testing/go-client/assembly.zip
-
 import:
   - golang/helloworld/dubbo/.travis.yml
 #  - golang/direct/dubbo/.travis.yml
