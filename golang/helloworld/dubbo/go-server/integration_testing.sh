@@ -22,3 +22,10 @@ set -x
 rm -rf assembly
 cp -r $1/.integration/testing/$2/assembly .
 assembly/linux/dev.sh
+cd target/*/*/
+# is async
+if [[ $3 ]]; then
+	nohup bin/load.sh start > a.out&
+else
+	bin/load.sh start
+fi
