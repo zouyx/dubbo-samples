@@ -8,3 +8,4 @@ env:
 import:
   - golang/helloworld/dubbo/.travis.yml
   - golang/direct/dubbo/.travis.yml
+  - golang/async/.travis.yml
