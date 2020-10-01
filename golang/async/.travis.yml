@@ -1,8 +1,8 @@
 stages:
-  - Test direct
+  - Test async
 jobs:
   include:
-    - stage: Test direct
+    - stage: Test async
       script:
         - PROJECT_HOME=$(pwd)/golang
         - CASE_HOME=/direct/dubbo
