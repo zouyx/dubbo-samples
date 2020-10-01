@@ -3,7 +3,6 @@ stages:
 jobs:
   include:
     - stage: Test hello world
-      name: "prepare env"
       script:
         - PROJECT_HOME=$(pwd)/golang
         - CASE_HOME=/helloworld/dubbo
